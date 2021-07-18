@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-docker-integrataion
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: jenkins-docker-integrataion
+  template:
+    metadata:
+      labels:
+        app: jenkins-docker-integrataion
+    spec:
+      containers:
+      - image: docker.io/ericyu2021/jenkins-docker-integration:latest
+        name: jenkins-docker-integrataion
+        ports:
+        - containerPort: 80
